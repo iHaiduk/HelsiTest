@@ -20,11 +20,16 @@ const muiTheme = getMuiTheme({
     return {
         parking: store.parking
     };
-})
+},
+    dispatch => ({
+        addCar: (car) => {
+            dispatch({ type: 'ADD_CAR', car });
+        }
+    })
+)
 class Lister extends Component {
 
     static propTypes = {
-        dispatch: PropTypes.func.isRequired,
         parking: PropTypes.shape({
             busy: PropTypes.shape({
                 track: PropTypes.array,
@@ -36,7 +41,8 @@ class Lister extends Component {
                 disabled: PropTypes.number,
                 sedan: PropTypes.number
             })
-        })
+        }),
+        addCar: PropTypes.func
     };
 
     constructor (props, context) {
@@ -45,7 +51,7 @@ class Lister extends Component {
     }
 
     handleTouchTap (index) {
-        this.props.dispatch({ type: 'ADD_CAR', car: index });
+        this.props.addCar(index);
     }
 
     render () {

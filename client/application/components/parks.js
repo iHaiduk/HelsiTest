@@ -21,7 +21,16 @@ const muiTheme = getMuiTheme({
     return {
         parking: store.parking
     };
-})
+},
+    dispatch => ({
+        closeModal: () => {
+            dispatch({ type: 'CLOSE_MODAL' });
+        },
+        removeCar: (parkType, index) => {
+            dispatch({ type: 'REMOVE_CAR', parkType, index });
+        }
+    })
+)
 class Park extends Component {
 
     static propTypes = {
@@ -38,7 +47,9 @@ class Park extends Component {
                 sedan: PropTypes.number
             }),
             notFree: PropTypes.bool
-        })
+        }),
+        removeCar: PropTypes.func,
+        closeModal: PropTypes.func
     };
 
     constructor (props, context) {
@@ -62,11 +73,11 @@ class Park extends Component {
     }
 
     handleClose () {
-        this.props.dispatch({ type: 'CLOSE_MODAL' });
+        this.props.closeModal();
     }
 
     removeCar (parkType, index) {
-        this.props.dispatch({ type: 'REMOVE_CAR', parkType, index });
+        this.props.removeCar(parkType, index);
     }
 
     rowData (parkType) {
