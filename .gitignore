@@ -48,5 +48,8 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
-
+.ide
 /public/
+.idea
+client/.DS_Store
+client/application/.DS_Store

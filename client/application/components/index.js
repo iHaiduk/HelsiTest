@@ -17,7 +17,7 @@ const muiTheme = getMuiTheme({
 });
 
 @connect((store) => store)
-class Hello extends Component {
+class Parks extends Component {
 
     static propTypes = {
         dispatch: PropTypes.func.isRequired
@@ -39,4 +39,4 @@ class Hello extends Component {
     }
 }
 
-export default Hello;
+export default Parks;

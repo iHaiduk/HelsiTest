@@ -21,7 +21,7 @@ const muiTheme = getMuiTheme({
         parking: store.parking
     };
 })
-class Hello extends Component {
+class Lister extends Component {
 
     static propTypes = {
         dispatch: PropTypes.func.isRequired,
@@ -70,8 +70,9 @@ class Hello extends Component {
                     </List>
                     <List>
                         <Subheader>Info of busy</Subheader>
-                        {Object.keys(busy).map((type) => (
+                        {Object.keys(busy).map((type, i) => (
                             <ListItem
+                                key={i}
                                 primaryText={`${type}: ${busy[type].length} / ${all[type]}`}
                             />
                         ))}
@@ -82,4 +83,4 @@ class Hello extends Component {
     }
 }
 
-export default Hello;
+export default Lister;
